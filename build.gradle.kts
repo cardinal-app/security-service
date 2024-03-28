@@ -7,7 +7,7 @@ plugins {
 	kotlin("plugin.spring") version "1.9.23"
 }
 
-group = "com.jrsmth.cardinal"
+group = "io.jrsmth.cardinal"
 version = "0.0.0-SNAPSHOT"
 
 java {
@@ -16,12 +16,25 @@ java {
 
 repositories {
 	mavenCentral()
+	maven {
+		name = "GitHubPackages"
+		url = uri("https://maven.pkg.github.com/cardinal-app/common")
+		credentials {
+			username = System.getenv("GPR_USER")
+			password = System.getenv("GPR_KEY")
+		}
+	}
 }
 
 dependencies {
+	implementation("io.jrsmth.cardinal:common:0.0.0")
+
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
 }
 
 tasks.withType<KotlinCompile> {
