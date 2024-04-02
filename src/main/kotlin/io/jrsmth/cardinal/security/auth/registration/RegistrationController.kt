@@ -17,7 +17,7 @@ import jakarta.validation.Valid
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/register")
+@RequestMapping("/auth/register")
 class RegistrationController(
     val service: RegistrationService
 ) {
