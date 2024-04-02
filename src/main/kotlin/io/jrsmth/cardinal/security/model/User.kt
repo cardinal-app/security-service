@@ -1,4 +1,4 @@
-package io.jrsmth.cardinal.auth.model
+package io.jrsmth.cardinal.security.model
 
 import io.jrsmth.cardinal.common.model.AbstractEntity
 

@@ -1,4 +1,4 @@
-package io.jrsmth.cardinal.auth.login
+package io.jrsmth.cardinal.security.auth.login
 
 import lombok.RequiredArgsConstructor
 import org.springframework.web.bind.annotation.RequestMapping

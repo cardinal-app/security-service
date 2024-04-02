@@ -1,4 +1,4 @@
-package io.jrsmth.cardinal.auth
+package io.jrsmth.cardinal.security
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

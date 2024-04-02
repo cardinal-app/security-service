@@ -1,4 +1,4 @@
-package io.jrsmth.cardinal.auth
+package io.jrsmth.cardinal.security
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
