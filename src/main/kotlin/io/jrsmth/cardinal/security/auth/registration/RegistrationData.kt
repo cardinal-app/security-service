@@ -1,4 +1,4 @@
-package io.jrsmth.cardinal.security.model.registration
+package io.jrsmth.cardinal.security.auth.registration
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import jakarta.validation.constraints.Email

@@ -1,11 +1,13 @@
-package io.jrsmth.cardinal.security.model
+package io.jrsmth.cardinal.security.user
 
 import io.jrsmth.cardinal.common.model.AbstractEntity
+import jakarta.persistence.Table
 
 /**
  * Cardinal User
  * @since 26th March 2024
  */
+@Table(name = "user")
 data class User (
     var active: Boolean,
     var firstName: String?,

@@ -1,8 +1,6 @@
 package io.jrsmth.cardinal.security.auth.registration
 
-import io.jrsmth.cardinal.security.model.User
-import io.jrsmth.cardinal.security.model.registration.RegistrationData
-import io.jrsmth.cardinal.security.exception.registration.RegistrationException
+import io.jrsmth.cardinal.security.user.User
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import lombok.RequiredArgsConstructor
