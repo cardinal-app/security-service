@@ -38,7 +38,7 @@ class RegistrationController(
 
         } catch (e: RegistrationException) {
             log.error("Registration failed with error [{}]", e.message)
-            ResponseEntity.badRequest(e.message)
+            ResponseEntity.badRequest().body(e.message)
         }
     }
 
