@@ -1,10 +1,10 @@
-package io.jrsmth.cardinal.security
+package io.jrsmth.cardinal.auth
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SecurityServiceApplicationTests {
+class AuthServiceApplicationTests {
 
 	@Test
 	fun contextLoads() {

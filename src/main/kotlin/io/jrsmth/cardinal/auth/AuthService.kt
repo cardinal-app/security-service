@@ -1,11 +1,11 @@
-package io.jrsmth.cardinal.security
+package io.jrsmth.cardinal.auth
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SecurityService
+class AuthService
 
 fun main(args: Array<String>) {
-	runApplication<SecurityService>(*args)
+	runApplication<AuthService>(*args)
 }
