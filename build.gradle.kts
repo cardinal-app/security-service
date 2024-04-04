@@ -5,6 +5,7 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.4"
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
+	id("groovy")
 }
 
 group = "io.jrsmth.cardinal"
@@ -40,6 +41,8 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.spockframework:spock-core:2.4-M2-groovy-4.0")
+	testImplementation("org.spockframework:spock-spring:2.4-M2-groovy-4.0")
 }
 
 tasks.withType<KotlinCompile> {

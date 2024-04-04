@@ -1,1 +1,1 @@
-rootProject.name = "security-service"
+rootProject.name = "sec-svc"

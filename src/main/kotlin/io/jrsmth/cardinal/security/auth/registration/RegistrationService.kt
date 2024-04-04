@@ -5,6 +5,7 @@ import io.jrsmth.cardinal.security.user.UserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class RegistrationService(
@@ -15,10 +16,12 @@ class RegistrationService(
         val log: Logger = LoggerFactory.getLogger(RegistrationController::class.java)
     }
 
+    /** Register user if new to platform */
     fun register(data: RegistrationData): User {
         val user = User(true, data.firstName, data.lastName, data.email, data.password)
 
         if (isExisting(user)) {
+            log.warn("[register] User already exists with email [{}]!", data.email)
             throw RegistrationException()
 
         } else {
@@ -29,8 +32,11 @@ class RegistrationService(
         }
     }
 
+    /** Determine if registration details are duplicate */
     private fun isExisting(user: User): Boolean {
-        return false
+        val existingUser: Optional<User> = userRepo.findByEmail(user.email!!)
+
+        return existingUser.isPresent
     }
 
 }

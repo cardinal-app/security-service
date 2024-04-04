@@ -26,7 +26,7 @@ class RegistrationController(
 
     /** Registers a new user */
     @PostMapping("/")
-    @Throws(Exception::class)
+    @Throws(Exception::class) // Remove?
     fun register(
         request: HttpServletRequest, response: HttpServletResponse, @Valid @RequestBody user: RegistrationData
     ): ResponseEntity<Any> {
