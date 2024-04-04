@@ -1,5 +1,6 @@
 package io.jrsmth.cardinal.security.auth.registration
 
+import io.jrsmth.cardinal.common.exception.CardinalException
 import io.jrsmth.cardinal.security.user.User
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -25,8 +26,7 @@ class RegistrationController(
     }
 
     /** Registers a new user */
-    @PostMapping("/")
-    @Throws(Exception::class) // Remove?
+    @PostMapping
     fun register(
         request: HttpServletRequest, response: HttpServletResponse, @Valid @RequestBody user: RegistrationData
     ): ResponseEntity<Any> {
@@ -34,7 +34,7 @@ class RegistrationController(
             val registrant: User = service.register(user)
             ResponseEntity.ok(registrant)
 
-        } catch (e: RegistrationException) {
+        } catch (e: CardinalException) {
             log.error("Registration failed with error [{}]", e.message)
             ResponseEntity.badRequest().body(e.message)
         }

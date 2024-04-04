@@ -1,14 +1,17 @@
 package io.jrsmth.cardinal.security.auth.registration
 
+import io.jrsmth.cardinal.common.exception.CardinalException
+import io.jrsmth.cardinal.common.util.Messages
 import io.jrsmth.cardinal.security.user.User
 import io.jrsmth.cardinal.security.user.UserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import java.util.*
+import java.util.Optional
 
 @Service
 class RegistrationService(
+    val messages: Messages,
     val userRepo: UserRepository
 ) {
 
@@ -22,7 +25,7 @@ class RegistrationService(
 
         if (isExisting(user)) {
             log.warn("[register] User already exists with email [{}]!", data.email)
-            throw RegistrationException()
+            throw CardinalException(RegistrationFailure.EMAIL_EXISTS.reason(messages))
 
         } else {
             val registrant: User = userRepo.save(user)

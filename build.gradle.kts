@@ -16,6 +16,7 @@ java {
 }
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 	maven {
 		name = "GitHubPackages"
@@ -28,12 +29,17 @@ repositories {
 }
 
 dependencies {
-	implementation("io.jrsmth.cardinal:common:0.0.0")
-
+	implementation("io.jrsmth.cardinal:common:0.0.2-SNAPSHOT")
+//	implementation("io.jrsmth.cardinal:common:0.0.1")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	// Note :: https://stackoverflow.com/questions/33869606/intellij-15-springboot-devtools-livereload-not-working
+
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")
 

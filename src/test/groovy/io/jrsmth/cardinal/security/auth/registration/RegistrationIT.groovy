@@ -1,7 +1,7 @@
-package io.jrsmth.cardinal.security
+package io.jrsmth.cardinal.security.auth.registration
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.jrsmth.cardinal.security.auth.registration.RegistrationData
+import io.jrsmth.cardinal.common.util.Messages
 import io.jrsmth.cardinal.security.user.User
 import io.jrsmth.cardinal.security.user.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,13 +17,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class RegistrationIT extends Specification {
+class RegistrationIT extends Specification implements RegistrationTrait {
 
     @Autowired MockMvc mockMvc
     @Autowired ObjectMapper mapper
+    @Autowired Messages messages
     @Autowired UserRepository userRepo
 
-    def email = "ema.il@address.com"
     def endpoint = "/auth/register"
 
     def "should register user with correct response when valid registration data used"() {
@@ -32,9 +32,6 @@ class RegistrationIT extends Specification {
 
     def "should reject registration with correct response when duplicate email is used"() {
         given:
-        def data = new RegistrationData()
-        data.email = email
-
         def existingUser = new User(true, "", "", email, "")
         userRepo.save(existingUser)
 
@@ -42,15 +39,18 @@ class RegistrationIT extends Specification {
         userRepo.findById(1L).get().email == email
 
         when:
-        def result = mockMvc.perform(post(endpoint)
+        def response = mockMvc.perform(post(endpoint)
                 .contentType("application/json;charset=UTF-8")
                 .content(mapper.writeValueAsString(data)))
                 .andExpect(status().isBadRequest())
                 .andDo(print())
                 .andReturn()
+                .getResponse()
+                .getContentAsString()
 
         then:
-        result.getResponse().getContentAsString() == null
+        response == "User already exists with this email address"
+        // FixMe :: messages.get("registration.failure.user-exists")
 
         and:
         noExceptionThrown()

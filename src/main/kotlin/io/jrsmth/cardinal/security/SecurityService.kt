@@ -4,8 +4,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SecurityService
+class SecurityService {
+	fun main(args: Array<String>) {
+		runApplication<SecurityService>(*args)
+	}
 
-fun main(args: Array<String>) {
-	runApplication<SecurityService>(*args)
 }
