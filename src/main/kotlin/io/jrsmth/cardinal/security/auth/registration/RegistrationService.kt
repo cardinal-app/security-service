@@ -25,7 +25,7 @@ class RegistrationService(
 
         if (isExisting(user)) {
             log.warn("[register] User already exists with email [{}]!", data.email)
-            throw CardinalException(RegistrationFailure.EMAIL_EXISTS.reason(messages))
+            throw CardinalException(messages, RegistrationFailure.EMAIL_EXISTS.reason())
 
         } else {
             val registrant: User = userRepo.save(user)
