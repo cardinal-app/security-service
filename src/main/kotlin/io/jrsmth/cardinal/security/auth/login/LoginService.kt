@@ -17,15 +17,16 @@ class LoginService (
     /** Authenticate user with token */
     @Throws(CardinalException::class)
     fun login(attempt: LoginData): String {
-        val existing: User = userRepo.findByEmail(attempt.email!!).orElseThrow {
-            CardinalException(messages, LoginFailure.NO_USER.reason())
-        }
+        val existing: User = userRepo.findByEmail(attempt.email!!)
+            .orElseThrow {
+                CardinalException(messages, LoginFailure.NO_USER.reason())
+            }
 
         if (isIncorrectPassword(existing.password, attempt.password)) {
             throw CardinalException(messages, LoginFailure.PASSWORD.reason())
         }
 
-        return tokenService.generate(existing)
+        return tokenService.generateFor(existing)
     }
 
     /** Determine if the password is incorrect */

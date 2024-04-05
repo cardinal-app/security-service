@@ -51,7 +51,7 @@ class LoginController(
         }
     }
 
-    // Question :: make this a common utility? @CardinalValidation(failure=LoginFailure.ROGUE_DATA.reason())
+    // Question :: make this a common utility? @CardinalValidation(failure=LoginFailure.ROGUE_DATA)
     /** Handle exception when rogue login data provided */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException::class)

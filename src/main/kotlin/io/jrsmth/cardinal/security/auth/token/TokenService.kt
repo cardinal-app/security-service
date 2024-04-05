@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 class TokenService {
 
     /** Generate a JWT token for given user */
-    fun generate(user: User): String {
+    fun generateFor(user: User): String {
         return "jwt:${user.email}"
     }
 
