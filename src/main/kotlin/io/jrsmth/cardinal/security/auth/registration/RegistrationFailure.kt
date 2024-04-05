@@ -10,7 +10,8 @@ import io.jrsmth.cardinal.common.exception.Reasonable
  */
 enum class RegistrationFailure : Reasonable {
 
-    EMAIL_EXISTS;
+    EMAIL_EXISTS,
+    ROGUE_DATA;
 
     override fun reason(): String {
         return "registration.failure." + this.name.lowercase()

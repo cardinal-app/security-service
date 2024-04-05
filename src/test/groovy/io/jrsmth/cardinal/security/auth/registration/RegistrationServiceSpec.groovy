@@ -7,6 +7,12 @@ import io.jrsmth.cardinal.security.user.UserRepository
 import spock.lang.Specification
 import spock.lang.Subject
 
+/**
+ * Unit tests for {@link RegistrationService}
+ *
+ * @author J. R. Smith
+ * @since 4th April 2024
+ */
 class RegistrationServiceSpec extends Specification implements RegistrationTrait {
 
     def messages = Stub(Messages)

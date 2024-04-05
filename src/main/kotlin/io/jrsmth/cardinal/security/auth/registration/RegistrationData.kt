@@ -15,20 +15,20 @@ class RegistrationData : Serializable {
         private const val serialVersionUID = 7177615681547361636L
     }
 
-    @NotEmpty(message = "{firstName.empty}")
-    @Size(max = 50, message = "{firstName.length}")
+    @NotEmpty(message = "firstName {validation.empty}")
+    @Size(max = 50, message = "firstName {validation.length}")
     var firstName: String? = null
 
-    @NotEmpty(message = "{lastName.empty}")
-    @Size(max = 50, message = "{lastName.length}")
+    @NotEmpty(message = "lastName {validation.empty}")
+    @Size(max = 50, message = "lastName {validation.length}")
     var lastName: String? = null
 
-    @NotEmpty(message = "{email.empty}")
-    @Email(message = "{email.format}")
+    @NotEmpty(message = "email {validation.empty}")
+    @Email(message = "email {validation.format}")
     var email: String? = null
 
-    @NotEmpty(message = "{password.empty}")
-    @Size(max = 20, message = "{password.length}")
+    @NotEmpty(message = "password {validation.empty}")
+    @Size(max = 50, message = "password {validation.length}")
     var password: String? = null
 
 }
