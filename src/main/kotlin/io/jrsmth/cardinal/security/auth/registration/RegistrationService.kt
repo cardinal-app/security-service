@@ -20,6 +20,7 @@ class RegistrationService(
     }
 
     /** Register user if new to platform */
+    @Throws(CardinalException::class)
     fun register(data: RegistrationData): User {
         val user = User(true, data.firstName, data.lastName, data.email, data.password)
 
