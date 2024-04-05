@@ -16,7 +16,7 @@ class RegistrationService(
 ) {
 
     companion object {
-        val log: Logger = LoggerFactory.getLogger(RegistrationController::class.java)
+        val log: Logger = LoggerFactory.getLogger(RegistrationService::class.java)
     }
 
     /** Register user if new to platform */
