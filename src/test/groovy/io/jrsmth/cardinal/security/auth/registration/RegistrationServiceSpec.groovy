@@ -1,7 +1,7 @@
 package io.jrsmth.cardinal.security.auth.registration
 
 import io.jrsmth.cardinal.common.exception.CardinalException
-import io.jrsmth.cardinal.common.util.Messages
+import io.jrsmth.cardinal.common.util.resource.Messages
 import io.jrsmth.cardinal.security.user.User
 import io.jrsmth.cardinal.security.user.UserRepository
 import spock.lang.Specification

@@ -1,8 +1,8 @@
 package io.jrsmth.cardinal.security.auth.login
 
 import io.jrsmth.cardinal.common.exception.CardinalException
-import io.jrsmth.cardinal.common.util.Messages
-import io.jrsmth.cardinal.common.util.Response
+import io.jrsmth.cardinal.common.util.resource.Messages
+import io.jrsmth.cardinal.common.util.rest.Response
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.validation.Valid
@@ -46,7 +46,7 @@ class LoginController(
 
         } catch (e: CardinalException) {
             log.error("Login failed with error [{}]", e.message)
-            Response.badRequest(e.message)
+            Response.unauthorised(e.message)
 
         }
     }

@@ -1,8 +1,8 @@
 package io.jrsmth.cardinal.security.auth.login
 
 import io.jrsmth.cardinal.common.exception.CardinalException
-import io.jrsmth.cardinal.common.util.Messages
-import io.jrsmth.cardinal.security.auth.token.TokenService
+import io.jrsmth.cardinal.common.util.resource.Messages
+import io.jrsmth.cardinal.common.util.security.TokenManager
 import io.jrsmth.cardinal.security.user.User
 import io.jrsmth.cardinal.security.user.UserRepository
 import org.springframework.stereotype.Service
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class LoginService (
     val messages: Messages,
-    val tokenService: TokenService,
+    val tokenManager: TokenManager,
     val userRepo: UserRepository
 ){
 
@@ -26,7 +26,7 @@ class LoginService (
             throw CardinalException(messages, LoginFailure.PASSWORD.reason())
         }
 
-        return tokenService.generateFor(existing)
+        return tokenManager.generateFor(existing.id)
     }
 
     /** Determine if the password is incorrect */

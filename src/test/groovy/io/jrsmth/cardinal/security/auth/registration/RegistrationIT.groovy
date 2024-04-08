@@ -1,7 +1,7 @@
 package io.jrsmth.cardinal.security.auth.registration
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import io.jrsmth.cardinal.common.util.Messages
+import io.jrsmth.cardinal.common.util.resource.Messages
 import io.jrsmth.cardinal.security.user.User
 import io.jrsmth.cardinal.security.user.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -80,7 +80,7 @@ class RegistrationIT extends Specification implements RegistrationTrait {
 
         then:
         response == "User already exists with this email address"
-        // FixMe :: messages.get("registration.failure.user-exists")
+        // FixMe :: messages.get("registration.failure.user_exists")
 
         and:
         noExceptionThrown()

@@ -14,14 +14,7 @@ trait RegistrationTrait {
 
     /** Return sample registration data */
     RegistrationData getData() {
-        def data = new RegistrationData()
-
-        data.firstName = firstName
-        data.lastName = lastName
-        data.email = email
-        data.password = password
-
-        return data
+        return getData(firstName, lastName, email, password)
     }
 
     /** Return sample registration data */

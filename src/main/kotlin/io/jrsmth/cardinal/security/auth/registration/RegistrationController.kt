@@ -1,8 +1,8 @@
 package io.jrsmth.cardinal.security.auth.registration
 
 import io.jrsmth.cardinal.common.exception.CardinalException
-import io.jrsmth.cardinal.common.util.Messages
-import io.jrsmth.cardinal.common.util.Response
+import io.jrsmth.cardinal.common.util.resource.Messages
+import io.jrsmth.cardinal.common.util.rest.Response
 import io.jrsmth.cardinal.security.user.User
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
