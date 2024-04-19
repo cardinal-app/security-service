@@ -29,12 +29,12 @@ class TokenController(
     fun login(request: HttpServletRequest, response: HttpServletResponse): ResponseEntity<Any> {
         return try {
             val token = request.getHeader("Authorization")
-            //LOG
+            log.debug("[validate] Token successfully retrieved from auth header")
 
-            Response.ok(service.isValid(request))
+            Response.ok(service.isValid(token))
 
         } catch (e: Exception) {
-            // LOG
+            log.debug("[validate] Token validation failed: {}", e.message)
             Response.badRequest(e.message)
 
         }
