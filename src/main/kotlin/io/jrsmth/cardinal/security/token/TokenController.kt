@@ -28,14 +28,15 @@ class TokenController(
     @GetMapping("/validate")
     fun login(request: HttpServletRequest, response: HttpServletResponse): ResponseEntity<Any> {
         return try {
-            val token = request.getHeader("Authorization")
-            log.debug("[validate] Token successfully retrieved from auth header")
+            val authorisation = request.getHeader("Authorization")
+            val token = authorisation.split(" ")[1]
+            log.debug("[validate] Successfully retrieved token from auth header")
 
             Response.ok(service.isValid(token))
 
         } catch (e: Exception) {
             log.debug("[validate] Token validation failed: {}", e.message)
-            Response.badRequest(e.message)
+            Response.badRequest(messages.get(TokenFailure.INVALID_AUTH.reason()))
 
         }
     }
