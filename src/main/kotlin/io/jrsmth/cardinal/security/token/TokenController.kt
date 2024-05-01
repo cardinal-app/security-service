@@ -26,7 +26,7 @@ class TokenController(
 
     /** Validates an Authorisation Token */
     @GetMapping("/validate")
-    fun login(request: HttpServletRequest, response: HttpServletResponse): ResponseEntity<Any> {
+    fun validate(request: HttpServletRequest, response: HttpServletResponse): ResponseEntity<Any> {
         return try {
             val authorisation = request.getHeader("Authorization")
             val token = authorisation.split(" ")[1]

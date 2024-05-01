@@ -1,5 +1,7 @@
 server:
   port: 8010
+cors:
+  originPatterns: https://cardinal.jrsmth.io,http://localhost:4200 # ${CORS_ORIGINS}
 token:
   signing:
     secret: ${TOKEN_SECRET}
