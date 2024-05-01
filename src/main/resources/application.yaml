@@ -1,5 +1,8 @@
 server:
   port: 8010
+token:
+  signing:
+    secret: ${TOKEN_SECRET}
 management:
   endpoints:
     web:

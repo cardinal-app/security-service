@@ -10,4 +10,5 @@ RUN gradle build --no-daemon
 FROM openjdk:21-jdk
 COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
 ARG PROFILE
-ENTRYPOINT ["java","-jar","-Dspring.profiles.active=${PROFILE}","app.jar"]
+ENV profile=$PROFILE
+ENTRYPOINT java -jar -Dspring.profiles.active=$profile app.jar
