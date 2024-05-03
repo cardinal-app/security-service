@@ -42,7 +42,9 @@ class LoginController(
     ): ResponseEntity<Any> {
         return try {
             val token: String = service.login(credentials)
-            Response.ok(token)
+            Response.ok(
+                mapOf("token" to token)
+            )
 
         } catch (e: CardinalException) {
             log.error("Login failed with error [{}]", e.message)
