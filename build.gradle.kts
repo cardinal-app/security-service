@@ -36,6 +36,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.apache.groovy:groovy-all:4.0.21")
 
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	// Note :: https://stackoverflow.com/questions/33869606/intellij-15-springboot-devtools-livereload-not-working

@@ -1,5 +1,6 @@
 package io.jrsmth.cardinal.security.token
 
+import groovy.json.JsonSlurper
 import io.jrsmth.cardinal.common.util.security.TokenManager
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -28,6 +29,7 @@ class TokenIT extends Specification {
 
     def endpoint = "/token"
     def userId = 1L
+    def json = new JsonSlurper()
 
     def "should verify a valid token"() {
         given:
@@ -43,7 +45,9 @@ class TokenIT extends Specification {
                 .getContentAsString()
 
         then:
-        response == true.toString()
+        json.parseText(response)['valid']
+
+        and:
         noExceptionThrown()
     }
 
@@ -62,7 +66,9 @@ class TokenIT extends Specification {
                 .getContentAsString()
 
         then:
-        response == false.toString()
+        !json.parseText(response)['valid']
+
+        and:
         noExceptionThrown()
     }
 

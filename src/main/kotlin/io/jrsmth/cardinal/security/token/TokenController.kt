@@ -32,7 +32,8 @@ class TokenController(
             val token = authorisation.split(" ")[1]
             log.debug("[validate] Successfully retrieved token from auth header")
 
-            Response.ok(service.isValid(token))
+            val valid = service.isValid(token)
+            Response.ok(mapOf("valid" to valid))
 
         } catch (e: Exception) {
             log.debug("[validate] Token validation failed: {}", e.message)
