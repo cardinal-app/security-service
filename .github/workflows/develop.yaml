@@ -1,0 +1,11 @@
+name: develop
+on:
+  push:
+    branches: [ develop ]
+jobs:
+  test:
+    name: test
+    permissions:
+      packages: read
+    secrets: inherit
+    uses: ./.github/workflows/step-test.yaml
