@@ -6,6 +6,8 @@ plugins {
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
 	id("groovy")
+	id("net.researchgate.release") version "3.0.2"
+	id("maven-publish")
 }
 
 group = "io.jrsmth.cardinal"
@@ -29,7 +31,6 @@ repositories {
 }
 
 dependencies {
-//	implementation("io.jrsmth.cardinal:common:0.0.3-SNAPSHOT")
 	implementation("io.jrsmth.cardinal:common:0.0.2")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
@@ -62,3 +63,35 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.bootJar {
+	enabled = false
+}
+
+tasks.jar {
+	enabled = true
+}
+
+release {
+	buildTasks.add("publish")
+}
+
+publishing {
+	publications {
+		create<MavenPublication>("default") {
+			from(components["java"])
+		}
+	}
+
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/cardinal-app/security-services")
+			credentials {
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
+}
+
