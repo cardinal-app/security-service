@@ -88,8 +88,8 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/cardinal-app/security-services")
 			credentials {
-				username = System.getenv("GPR_USER")
-				password = System.getenv("GPR_KEY")
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
