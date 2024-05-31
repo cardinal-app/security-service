@@ -78,7 +78,7 @@ release {
 
 publishing {
 	publications {
-		create<MavenPublication>("gprRelease") {
+		create<MavenPublication>("gpr") {
 			from(components["java"])
 		}
 	}
@@ -86,10 +86,10 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/cardinal-app/security-services")
+			url = uri("https://maven.pkg.github.com/cardinal-app/security-service")
 			credentials {
-				username = System.getenv("GITHUB_ACTOR")
-				password = System.getenv("GITHUB_TOKEN")
+				username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+				password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
