@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+	id("groovy")
 	id("org.springframework.boot") version "3.2.4"
 	id("io.spring.dependency-management") version "1.1.4"
-	kotlin("jvm") version "1.9.23"
-	kotlin("plugin.spring") version "1.9.23"
-	id("groovy")
 	id("net.researchgate.release") version "3.0.2"
 	id("maven-publish")
+	kotlin("jvm") version "1.9.23"
+	kotlin("plugin.spring") version "1.9.23"
 }
 
 group = "io.jrsmth.cardinal"
@@ -78,7 +78,7 @@ release {
 
 publishing {
 	publications {
-		create<MavenPublication>("default") {
+		create<MavenPublication>("gprRelease") {
 			from(components["java"])
 		}
 	}
